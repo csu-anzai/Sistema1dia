@@ -3,7 +3,7 @@ require "inc/header.php"?>
 <br>
 <div class="container">
 
-<div class="card border border-primary" style="width: 280px;  ">
+<div class="card border border-primary" style="width: 330px;  ">
     <div class="card-body">
     Bienvenido <strong><?php echo $_SESSION['admin'] ?></strong>
     </div>
@@ -30,8 +30,8 @@ require "inc/header.php"?>
         <a href="#" @click="newempleados=true"><img class="imagen" src="img/fondos/empleados.jpg" height="250"  alt="..."></a>
         </div>
         <div class="card-body">
-            <h5 class="card-title">Empleados</h5>
-            <p class="card-text">Aqui podras Ver, agregar , modificar y eliminar empleados</p>
+            <h5 class="card-title">Productos</h5>
+            <p class="card-text">Aqui podras Ver, agregar , modificar y eliminar productos</p>
         </div>
         </div>
     </div>
@@ -47,7 +47,7 @@ require "inc/header.php"?>
  <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-             <center><h2 class="text-center">Empleados</h2></center>
+             <center><h2 class="text-center">Productos</h2></center>
             <button type="button" class="close" @click="newempleados=false" data-dismiss="modal" aria-label="Close">
                  <span aria-hidden="true">&times;</span>
                 </button>
