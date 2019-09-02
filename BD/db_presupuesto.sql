@@ -74,7 +74,7 @@ CREATE TABLE `producto` (
   `precioventa` decimal(6,2) DEFAULT NULL,
   `ganancia` decimal(6,2) DEFAULT NULL,
   `foto` varchar(200) DEFAULT NULL,
-  `id_tipo` int(11) DEFAULT NULL
+  `id_tipo` int(11	) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Estructura de tabla para la tabla `tipoproducto`
