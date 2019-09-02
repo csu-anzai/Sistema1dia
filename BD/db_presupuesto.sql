@@ -63,7 +63,14 @@ CREATE TABLE `producto` (
   `preciocompra` decimal(6,2) DEFAULT NULL,
   `precioventa` decimal(6,2) DEFAULT NULL,
   `ganancia` decimal(6,2) DEFAULT NULL,
-  `foto` varchar(200) DEFAULT NULL
+  `foto` varchar(200) DEFAULT NULL,
+  `id_tipo` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `tipoproducto` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `detalle` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -119,6 +126,13 @@ ALTER TABLE `material`
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY(`id_tipo`);
+
+--
+-- Indices de la tabla `tipoproducto`
+--
+ALTER TABLE `tipoproducto`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -150,12 +164,19 @@ ALTER TABLE `producto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `tipoproducto`
+--
+ALTER TABLE `tipoproducto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
+ALTER TABLE `producto` ADD CONSTRAINT id_tipo FOREIGN KEY(id) REFERENCES `tipoproducto` (`id`);
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
