@@ -32,7 +32,7 @@ if(isset($_POST['btnlogin'])){
 =======
             if($value["nombre"]=="admin"){
                 
-                $nombre=$value['nombres'];
+                $nombre=$value['nombre'];
                 $_SESSION['admin']=$nombre;
 
             }else if($value["nombre"]=="tecnico"){
