@@ -13,27 +13,16 @@ if(isset($_POST['btnlogin'])){
 
 
 
-    $condicion="usuario ='".$usuario."' and contraseña ='".$pass."' and estado=1";
-    $u=$admin->validar2($condicion);
+    $condicion="user ='".$usuario."' and clave ='".$pass."'";
+    $u=$admin->buscar("usuario",$condicion);
 
 
     if($u){
         foreach ($u as $value) {
-            if($value["nombre"]=="admin"){
+            if($value["tipo"]=="admin"){
                 
-                $nombre=$value['nombres'];
+                $nombre=$value['nombre'];
                 $_SESSION['admin']=$nombre;
-
-            }else if($value["nombre"]=="tecnico"){
-
-                $_SESSION['tecnico']=$value['nombres'];
-
-            }else if($value["nombre"]=="cajero"){
-
-                $_SESSION['cajero']=$value['nombres'];
-
-            }else{
-                $_SESSION['empleado']=$value['id'];
             }
 
         }
