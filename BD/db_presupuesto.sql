@@ -77,6 +77,9 @@ CREATE TABLE `producto` (
   `id_tipo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- Estructura de tabla para la tabla `tipoproducto`
+--
+
 CREATE TABLE `tipoproducto` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
