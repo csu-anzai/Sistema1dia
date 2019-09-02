@@ -77,6 +77,8 @@ CREATE TABLE `producto` (
   `id_tipo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
 -- Volcado de datos para la tabla `producto`
 --
