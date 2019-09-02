@@ -44,7 +44,7 @@ require "inc/header.php"?>
 <!-- Modal -->
 <div class="contenido" v-if="newempleados">
 
- <div class="modal-dialog modal-xl">
+ <div class="modal-dialog modal-xl modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
              <center><h2 class="text-center">Productos</h2></center>
@@ -53,7 +53,7 @@ require "inc/header.php"?>
                 </button>
               </div>
               <div class="modal-body">
-                  <?php require "pages/empleados.php" ?>
+                  <?php require "pages/productos.php" ?>
              </div>
          </div>
      </div>

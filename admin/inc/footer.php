@@ -43,7 +43,7 @@
     <script src="../Style/fontawesome/js/all.js"></script>
     <script src="../js/vue.js"></script>
     <script src="../js/axios.js"></script>
-    <script src="admin/controllers/empleados.js"></script>
+    <script src="admin/controllers/productos.js"></script>
     
 </body>
 </html>
