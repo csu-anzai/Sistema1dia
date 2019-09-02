@@ -76,7 +76,10 @@
                             </div>
                             <div class="form-group">
                                  <label for="">Tipo</label>
-                                 <input class="form-control" type="number" name="tipo" id="tipo">
+                                 <select class="form-control" name="tipo" id="tipo">
+                                     <option v-for="item of tipo" :value="(item.id)">{{item.nombre}}</option>
+                                 </select>
+                                 
                             </div>
                             <div class="from-group">
                                 <label for="">Foto</label>

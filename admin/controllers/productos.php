@@ -84,6 +84,16 @@ switch ($accion) {
             $res['error']=true;
         } 
         break;
+    case 'mostrar2':
+        $u=$con->buscar("tipoproducto","1");
+        if($u){
+            $res['tipo']=$u;
+            $res['mensaje']="exito";
+        }else{
+            $res['mensaje']="Aun no hay Registros";
+            $res['error']=true;
+        }
+        break;
 }
 
 echo json_encode($res);

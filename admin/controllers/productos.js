@@ -9,17 +9,26 @@ var app = new Vue({
         url:null,
         eurl:null,
         productos:[],
+        tipo:[],
         mensaje:"",
         color:""
     },
     mounted:function(){
         this.mostrarProductos()
+        this.mostrarTipo()
     },
     methods:{
         mostrarProductos:function(){
             axios.get("admin/controllers/productos.php?accion=mostrar")
             .then((res)=>{
                 this.productos=res.data.productos
+                console.log(res)
+            })
+         },
+         mostrarTipo:function(){
+            axios.get("admin/controllers/productos.php?accion=mostrar2")
+            .then((res)=>{
+                this.tipo=res.data.tipo
                 console.log(res)
             })
          },
