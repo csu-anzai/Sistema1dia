@@ -9,6 +9,7 @@
     
     <button class="btn btn-success btn-sm" @click="nuevoProducto=true">Nuevo</button>
     <button class="btn btn-primary btn-sm float-right" @click="nuevoTipoP=true">Nuevo Tipo</button>
+    <span class="float-right mr-5">Ganancia Total: <strong> S/. {{sumaGananciaP}}</strong></span>
     <br><br>
     <table class="table table-sm">
         <thead>

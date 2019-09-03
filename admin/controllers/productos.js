@@ -29,6 +29,7 @@ var app = new Vue({
         ventaP:0,
         compraP:0,
         gananciaP:0,
+        totalGanaciaP:0
         
     },
     mounted:function(){
@@ -57,6 +58,13 @@ var app = new Vue({
             this.gananciaM=0
             this.gananciaM=this.elegido.precioventa - this.elegido.preciocompra
             return this.gananciaM
+        },
+        sumaGananciaP(){
+            this.totalGanaciaP=0
+            for(producto of this.productos){
+                this.totalGanaciaP = this.totalGanaciaP + parseFloat(producto.ganancia)
+            }
+            return this.totalGanaciaP
         }
     },
     
