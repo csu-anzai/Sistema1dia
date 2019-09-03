@@ -8,6 +8,7 @@
 </div>
     
     <button class="btn btn-success btn-sm" @click="nuevoProducto=true">Nuevo</button>
+    <span class="ml-3">Tienes: <strong>{{TotalProductos}}</strong> Productos</span>
     <button class="btn btn-primary btn-sm float-right" @click="nuevoTipoP=true">Nuevo Tipo</button>
     <span class="float-right mr-5">Ganancia Total: <strong> S/. {{sumaGananciaP}}</strong></span>
     <br><br>
@@ -150,7 +151,10 @@
                             </div>
                             <div class="form-group">
                                  <label for="">Tipo</label>
-                                 <input class="form-control" type="number" name="etipo" id="etipo" v-model="elegido.id_tipo">
+                                 <select class="form-control" name="etipo" id="etipo">
+                                     <option :value="(elegido.id_tipo)">{{elegido.id_tipo}}</option>
+                                     <option v-for="item of tipo" :value="(item.id)">{{item.nombre}}</option>
+                                 </select>
                             </div>
                             <div class="from-group">
                                 <label for="">Foto</label>

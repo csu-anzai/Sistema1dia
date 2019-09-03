@@ -12,10 +12,16 @@
     <link rel="stylesheet" href="../Style/modal.css">
    
     
-  
+    <style>
+        .fondo{
+          background-image: url(../img/fondos/fondo.jpg);
+          background-size: cover;
+        }
+    </style>
+
     <title>Pagina Administrador</title>
 </head>
-<body>
+<body class="fondo">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="box-shadow: 2px 2px 10px #666;">
     <div class="container">
   <a class="navbar-brand" href="#"><i class="fas fa-users-cog"></i> Admin</a>
