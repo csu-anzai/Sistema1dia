@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 03-09-2019 a las 02:44:55
+-- Tiempo de generación: 03-09-2019 a las 20:16:50
 -- Versión del servidor: 10.4.7-MariaDB-log
 -- Versión de PHP: 7.2.19
 
@@ -49,16 +49,18 @@ CREATE TABLE `material` (
   `preciocompra` decimal(6,2) DEFAULT NULL,
   `precioventa` decimal(6,2) DEFAULT NULL,
   `ganancia` decimal(6,2) DEFAULT NULL,
-  `id_tipo` int(11) NOT NULL
+  `id_tipo` int(11) NOT NULL,
+  `foto` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `material`
 --
 
-INSERT INTO `material` (`id`, `nombre`, `detalle`, `preciocompra`, `precioventa`, `ganancia`, `id_tipo`) VALUES
-(7, 'material 1', 'detalle 1', '20.00', '60.00', '40.00', 3),
-(8, 'material 2', 'detalle 2', '50.00', '150.00', '100.00', 4);
+INSERT INTO `material` (`id`, `nombre`, `detalle`, `preciocompra`, `precioventa`, `ganancia`, `id_tipo`, `foto`) VALUES
+(7, 'material 1', 'detalle 1', '20.00', '60.00', '40.00', 3, 'alejandro-toledo-manrique.jpg'),
+(12, 'mterial 2', 'detalle 2', '10.00', '30.00', '20.00', 4, '30409170.jpg'),
+(13, 'prueba', 'gg', '20.00', '100.00', '80.00', 3, 'codigo.jpg');
 
 -- --------------------------------------------------------
 
@@ -82,8 +84,8 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `detalle`, `preciocompra`, `precioventa`, `ganancia`, `foto`, `id_tipo`) VALUES
-(1, 'Disco Duro Solido 240gb Kingston Ssd A400', 'Factor de forma: 2.5\"\nInterfaz:\nSATA Rev. 3.0 (6 Gb/s), compatible con SATA Rev. 2.0 (3 Gb/s)', '100.00', '133.00', '33.00', 'discoduro.jpg', 2),
-(2, 'Samsung 5 500 Gb Ssd Disco Sólido Externo 540 ', 'Con una memoria flash V-NAND y un Puerto USB 3.1 Gen 2', '300.00', '444.00', '144.00', 'disc.jpg', 2),
+(1, 'Disco Duro Solido 240gb Kingston Ssd A400', 'Factor de forma: 2.5\"\nInterfaz:\nSATA Rev. 3.0 (6 Gb/s), compatible con SATA Rev. 2.0 (3 Gb/s)', '26.00', '104.00', '78.00', 'discoduro.jpg', 2),
+(2, 'Samsung 5 500 Gb Ssd Disco Sólido Externo 540 ', 'Con una memoria flash V-NAND y un Puerto USB 3.1 Gen 2', '207.00', '442.00', '235.00', 'disc.jpg', 2),
 (15, 'Teclado Mecanico Antryx Zigra Mk Blue/red Switch', 'Interruptor mecánico en dos presentaciones Outemu Blue y Outemu Red', '200.00', '250.00', '50.00', 'teclado.jpg', 3);
 
 -- --------------------------------------------------------
@@ -147,8 +149,10 @@ CREATE TABLE `tipoproducto` (
 --
 
 INSERT INTO `tipoproducto` (`id`, `nombre`, `detalle`) VALUES
-(2, 'Disco Duro', ' Disco con una gran capacidad de almacenamiento de datos informáticos que se encuentra insertado permanentemente en la unidad central de procesamiento de la computadora.'),
-(3, 'teclados', 'En informática, un teclado es un dispositivo o periférico de entrada, en parte inspirado en el teclado de las máquinas de escribir');
+(2, 'Disco Duro', ' Disco con una gran capacidad de almacenamiento'),
+(3, 'Teclados', 'Dispositivo o periférico de entrada, en parte inspirado en el teclado de las máquinas de escribir'),
+(4, 'Monitor', ':v para ver en hd 4k curvo'),
+(5, 'Lectora', 'para leer ');
 
 -- --------------------------------------------------------
 
@@ -234,13 +238,13 @@ ALTER TABLE `instalacion`
 -- AUTO_INCREMENT de la tabla `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `tipoinstalacion`
@@ -258,7 +262,7 @@ ALTER TABLE `tipomaterial`
 -- AUTO_INCREMENT de la tabla `tipoproducto`
 --
 ALTER TABLE `tipoproducto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
