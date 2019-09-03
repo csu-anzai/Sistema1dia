@@ -16,18 +16,6 @@ require "inc/header.php"?>
     <div class="col-auto">
         <div class="card" style="width: 18rem;">
         <div class="contenedor">
-
-        <a href="#"><img src="img/fondos/usuarios.jpg" height="250" class="imagen" alt="..."></a>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Usuarios</h5>
-            <p class="card-text">Aqui podras Ver ,agregar , modificar y eliminar usuarios</p>
-        </div>
-        </div>
-    </div>
-    <div class="col-auto">
-    <div class="card" style="width: 19rem;">
-
         <a href="#s" @click="newmaterial=true" ><img src="img/fondos/usuarios.jpg" height="250" class="imagen" alt="..."></a>
         </div>
         <div class="card-body">
@@ -39,7 +27,6 @@ require "inc/header.php"?>
 
     <div class="col-auto">
     <div class="card" style="width: 18rem;">
-
     <div class="contenedor">
         <a href="#" @click="newempleados=true"><img class="imagen" src="img/fondos/empleados.jpg" height="250"  alt="..."></a>
         </div>
@@ -103,5 +90,6 @@ require "inc/header.php"?>
 
 
 </div>
+
 
 <?php require "inc/footer.php"?>
