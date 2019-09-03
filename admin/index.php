@@ -14,7 +14,7 @@ require "inc/header.php"?>
 <div class="row">
 
     <div class="col-auto">
-        <div class="card" style="width: 18rem;">
+        <div class="card ml-3 mb-3" style="width: 18rem;">
         <div class="contenedor">
         <a href="#s" @click="newmaterial=true" ><img src="img/fondos/usuarios.jpg" height="250" class="imagen" alt="..."></a>
         </div>
@@ -26,7 +26,7 @@ require "inc/header.php"?>
     </div>
 
     <div class="col-auto">
-    <div class="card" style="width: 18rem;">
+    <div class="card ml-3 mb-3" style="width: 18rem;">
     <div class="contenedor">
         <a href="#" @click="newempleados=true"><img class="imagen" src="img/fondos/empleados.jpg" height="250"  alt="..."></a>
         </div>

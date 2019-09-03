@@ -26,7 +26,7 @@
         </thead>
         <tbody>
             <tr v-for="material of materiales">
-                <td><a href="#" @click="perfil=true"><img :src="'../img/material/'+ material.foto" width="50px" height="50px"></a></td>
+                <td><a href="#" @click="perfil=true"><img :src="'./img/material/'+ material.foto" width="50px" height="50px"></a></td>
                 <td><div style="width: 150px">{{material.nombre}}</div></td>
                 <td><div style="width: 200px">{{material.detalle}}</div></td>
                 <td>S/. {{material.preciocompra}}</td>
@@ -167,7 +167,7 @@
                                           <center><img :src="eurl" width="150px" height="150px"></center>  
                                     </div>
                                     <div v-else="eurl">
-                                        <center><img :src="'../img/material/'+elegido.foto" width="150px" height="150px"></center>
+                                        <center><img :src="'./img/material/'+elegido.foto" width="150px" height="150px"></center>
                                     </div>
                                     </div>
                                 </div>

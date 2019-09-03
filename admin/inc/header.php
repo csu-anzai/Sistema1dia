@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../Style/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../Style/bootstrap.min.css">
-    <link rel="stylesheet" href="../Style/fontawesome/css/all.css">
-    <link rel="stylesheet" href="../Style/footer.css">
-    <link rel="stylesheet" href="../Style/modal.css">
+    <link rel="stylesheet" href="./Style/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./Style/bootstrap.min.css">
+    <link rel="stylesheet" href="./Style/fontawesome/css/all.css">
+    <link rel="stylesheet" href="./Style/footer.css">
+    <link rel="stylesheet" href="./Style/modal.css">
    
     
     <style>
         .fondo{
-          background-image: url(../img/fondos/fondo.jpg) no-repeat center center;
-          background-size: cover;
+          background-image: url(img/fondos/fondo.jpg);
+          background-size:cover;
         }
     </style>
 

@@ -27,7 +27,7 @@
         </thead>
         <tbody>
             <tr v-for="producto of productos">
-                <td><div><a href="#" @click="verProducto=true;elegirProducto(producto)"><img :src="'../img/producto/'+producto.foto" width="50px" height="50px"></a></td>
+                <td><div><a href="#" @click="verProducto=true;elegirProducto(producto)"><img :src="'./img/producto/'+producto.foto" width="50px" height="50px"></a></td>
                 <td><div style="width: 200px">{{producto.nombre}}</div></td>
                 <td><div style="width: 200px">{{producto.detalle}}</div></td>
                 <td>S/. {{producto.preciocompra}}</td>
@@ -164,7 +164,7 @@
                                           <center><img :src="eurl" width="150px" height="150px"></center>  
                                     </div>
                                     <div v-else="eurl">
-                                        <center><img :src="'../img/producto/'+elegido.foto" width="150px" height="150px"></center>
+                                        <center><img :src="'./img/producto/'+elegido.foto" width="150px" height="150px"></center>
                                     </div>
                                     </div>
                                 </div>
@@ -222,7 +222,7 @@
                 <span aria-hidden="true">&times;</span>
                </button>
              <div class="modal-body">
-             <center><img :src="'../img/producto/'+elegido.foto" width="350px" height="350px"></center>
+             <center><img :src="'./img/producto/'+elegido.foto" width="350px" height="350px"></center>
         </div>
     </div>
 
