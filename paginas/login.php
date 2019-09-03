@@ -11,7 +11,7 @@
     <style>
       body{
         background-image: url(img/fondos/como-hacer-un-banner.png);
-        background-size: cover;
+          background-size: cover;
       }
     </style>
     <title>Login</title>

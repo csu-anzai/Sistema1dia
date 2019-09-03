@@ -8,6 +8,7 @@
 </div>
     
     <button class="btn btn-success btn-sm" @click="nuevoProducto=true">Nuevo</button>
+    <span class="ml-3">Tienes: <strong>{{TotalProductos}}</strong> Productos</span>
     <button class="btn btn-primary btn-sm float-right" @click="nuevoTipoP=true">Nuevo Tipo</button>
     <span class="float-right mr-5">Ganancia Total: <strong> S/. {{sumaGananciaP}}</strong></span>
     <br><br>
@@ -26,7 +27,7 @@
         </thead>
         <tbody>
             <tr v-for="producto of productos">
-                <td><a href="#" @click="perfil=true"><img :src="'../img/producto/'+producto.foto" width="50px" height="50px"></a></td>
+                <td><div><a href="#" @click="verProducto=true;elegirProducto(producto)"><img :src="'./img/producto/'+producto.foto" width="50px" height="50px"></a></td>
                 <td><div style="width: 200px">{{producto.nombre}}</div></td>
                 <td><div style="width: 200px">{{producto.detalle}}</div></td>
                 <td>S/. {{producto.preciocompra}}</td>
@@ -150,7 +151,10 @@
                             </div>
                             <div class="form-group">
                                  <label for="">Tipo</label>
-                                 <input class="form-control" type="number" name="etipo" id="etipo" v-model="elegido.id_tipo">
+                                 <select class="form-control" name="etipo" id="etipo">
+                                     <option :value="(elegido.id_tipo)">{{elegido.id_tipo}}</option>
+                                     <option v-for="item of tipo" :value="(item.id)">{{item.nombre}}</option>
+                                 </select>
                             </div>
                             <div class="from-group">
                                 <label for="">Foto</label>
@@ -160,7 +164,7 @@
                                           <center><img :src="eurl" width="150px" height="150px"></center>  
                                     </div>
                                     <div v-else="eurl">
-                                        <center><img :src="'../img/producto/'+elegido.foto" width="150px" height="150px"></center>
+                                        <center><img :src="'./img/producto/'+elegido.foto" width="150px" height="150px"></center>
                                     </div>
                                     </div>
                                 </div>
@@ -209,6 +213,22 @@
 
 </div>
 </div>
+
+<div class="contenido" v-if="verProducto">
+
+<div class="modal-dialog">
+       <div class="modal-content">
+       <button type="button" class="close" @click="verProducto=false" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+               </button>
+             <div class="modal-body">
+             <center><img :src="'./img/producto/'+elegido.foto" width="350px" height="350px"></center>
+        </div>
+    </div>
+
+</div>
+</div>
+
 <!-- Nuevo Tipo de Producto-->
 
 <div class="contenido" v-if="nuevoTipoP">
@@ -238,6 +258,7 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Detalle</th>
+                            <th>Options</th>
                         </tr>
                     </thead>
                     <tbody>

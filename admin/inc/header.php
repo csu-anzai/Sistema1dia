@@ -5,17 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../Style/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../Style/bootstrap.min.css">
-    <link rel="stylesheet" href="../Style/fontawesome/css/all.css">
-    <link rel="stylesheet" href="../Style/footer.css">
-    <link rel="stylesheet" href="../Style/modal.css">
+    <link rel="stylesheet" href="./Style/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./Style/bootstrap.min.css">
+    <link rel="stylesheet" href="./Style/fontawesome/css/all.css">
+    <link rel="stylesheet" href="./Style/footer.css">
+    <link rel="stylesheet" href="./Style/modal.css">
    
     
-  
+    <style>
+        .fondo{
+          background-image: url(img/fondos/fondo.jpg);
+          background-size:cover;
+        }
+    </style>
+
     <title>Pagina Administrador</title>
 </head>
-<body>
+<body class="fondo">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="box-shadow: 2px 2px 10px #666;">
     <div class="container">
   <a class="navbar-brand" href="#"><i class="fas fa-users-cog"></i> Admin</a>
