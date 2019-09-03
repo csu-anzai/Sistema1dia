@@ -16,7 +16,7 @@ require "inc/header.php"?>
     <div class="col-auto">
         <div class="card" style="width: 18rem;">
         <div class="contenedor">
-<<<<<<< HEAD
+
         <a href="#"><img src="img/fondos/usuarios.jpg" height="250" class="imagen" alt="..."></a>
         </div>
         <div class="card-body">
@@ -27,7 +27,7 @@ require "inc/header.php"?>
     </div>
     <div class="col-auto">
     <div class="card" style="width: 19rem;">
-=======
+
         <a href="#s" @click="newmaterial=true" ><img src="img/fondos/usuarios.jpg" height="250" class="imagen" alt="..."></a>
         </div>
         <div class="card-body">
@@ -39,7 +39,7 @@ require "inc/header.php"?>
 
     <div class="col-auto">
     <div class="card" style="width: 18rem;">
->>>>>>> RamaWendell
+
     <div class="contenedor">
         <a href="#" @click="newempleados=true"><img class="imagen" src="img/fondos/empleados.jpg" height="250"  alt="..."></a>
         </div>
@@ -104,8 +104,4 @@ require "inc/header.php"?>
 
 </div>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> RamaWendell
 <?php require "inc/footer.php"?>

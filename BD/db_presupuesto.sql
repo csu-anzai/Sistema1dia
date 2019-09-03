@@ -74,26 +74,9 @@ CREATE TABLE `producto` (
   `precioventa` decimal(6,2) DEFAULT NULL,
   `ganancia` decimal(6,2) DEFAULT NULL,
   `foto` varchar(200) DEFAULT NULL,
-<<<<<<< HEAD
-  `id_tipo` int(11	) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Estructura de tabla para la tabla `tipoproducto`
---
-
-CREATE TABLE `tipoproducto` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(50) DEFAULT NULL,
-  `detalle` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
-=======
   `id_tipo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
->>>>>>> RamaWendell
 --
 -- Volcado de datos para la tabla `producto`
 --

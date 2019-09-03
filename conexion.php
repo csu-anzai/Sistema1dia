@@ -41,15 +41,14 @@ class ConexionBD{
 		if($resultado)
 			return $resultado->fetch_all(MYSQLI_ASSOC);
 		return false;
-<<<<<<< HEAD
+
 	}	
 	public function subtotal($campos,$tabla,$condicion){
 		$resultado=$this->conexion->query("select $campos from $tabla where $condicion")or die($this->conexion->error);
 		if($resultado)
 			return $resultado->fetch_all(MYSQLI_ASSOC);
 		return false;
-=======
->>>>>>> RamaWendell
+
 	}
 	public function validar2($condicion){
 		$resultado=$this->conexion->query("select usuario.id_usuario, usuario.usuario, usuario.contraseña, tipousuario.nombre,tipousuario.id , empleado.nombres,empleado.id_empleado,empleado.estado FROM (usuario inner join tipousuario on usuario.tipousuario_id = tipousuario.id) inner join empleado on usuario.empleado_id_empleado= empleado.id_empleado where $condicion")or die($this->conexion->error);
