@@ -10,6 +10,7 @@
     <table class="table table-sm">
         <thead>
             <tr>
+                <th>Foto</th>
                 <th>Nombre</th>
                 <th>Detalle</th>
                 <th>$ Compra</th>
@@ -21,6 +22,7 @@
         </thead>
         <tbody>
             <tr v-for="material of materiales">
+                <td><a href="#" @click="perfil=true"><img :src="'../img/material/'+ material.foto" width="50px" height="50px"></a></td>
                 <td><div style="width: 150px">{{material.nombre}}</div></td>
                 <td><div style="width: 200px">{{material.detalle}}</div></td>
                 <td>S/. {{material.preciocompra}}</td>
@@ -61,15 +63,15 @@
                             </div>
                             <div class="form-group">
                                  <label for="">Compra</label>
-                                 <input class="form-control" type="number" name="compra" id="compra" v-model="compra">
+                                 <input class="form-control" type="number" name="compra" id="compra" v-model="compraM">
                             </div>
                             <div class="form-group">
                                  <label for="">Venta</label>
-                                 <input class="form-control" type="number" name="venta" id="venta" v-model="venta">
+                                 <input class="form-control" type="number" name="venta" id="venta" v-model="ventaM">
                             </div>
                             <div class="form-group">
                                  <label for="">Ganancia</label>
-                                 <input class="form-control" type="number" name="ganancia" :value="(sumarFrutas)" id="ganancia">
+                                 <input class="form-control" readonly type="number" name="ganancia" :value="(gananciaMaterial)" id="ganancia">
                             </div>
                             <div class="form-group">
                                  <label for="">Tipo</label>

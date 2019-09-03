@@ -18,9 +18,12 @@ var app = new Vue({
         materiales:[],
         mensaje:"",
         color:"",
-        venta:0,
-        compra:0,
-        total:0
+        ventaM:0,
+        compraM:0,
+        gananciaM:0,
+        ventaP:0,
+        compraP:0,
+        gananciaP:0,
         
     },
     mounted:function(){
@@ -30,12 +33,23 @@ var app = new Vue({
         this.mostrartipoMaterial()
     },
     computed:{
-        sumarFrutas(){
-            this.total=0
-            this.total=this.venta-this.compra
-            return this.total
+        gananciaMaterial(){
+            this.gananciaM=0
+            this.gananciaM=this.ventaM - this.compraM
+            return this.gananciaM
+        },
+        gananciaProducto(){
+            this.gananciaP=0
+            this.gananciaP=this.ventaP - this.compraP
+            return this.gananciaP
+        },
+        gananciaProductoE(){
+            this.gananciaP=0
+            this.gananciaP=this.elegido.precioventa - this.elegido.preciocompra
+            return this.gananciaP
         }
     },
+    
     methods:{
         mostrarMateriales:function(){
             axios.get("admin/controllers/materiales.php?accion=mostrar")
@@ -94,6 +108,9 @@ var app = new Vue({
                      this.mostrarProductos()
                      this.mensaje=res.data.mensaje
                      this.color=res.data.color
+                     this.compraP=0
+                     this.ventaP=0
+                     this.gananciaP=0
                 })
             }
             
@@ -116,6 +133,9 @@ var app = new Vue({
                      this.mostrarMateriales()
                      this.mensaje=res.data.mensaje
                      this.color=res.data.color
+                     this.compraM=0
+                     this.ventaM=0
+                     this.gananciaM=0
                 })
             }
             
@@ -141,6 +161,7 @@ var app = new Vue({
                      this.mostrarProductos()
                      this.mensaje=res.data.mensaje
                      this.color=res.data.color
+                     location.reload();
                 })
             }
             

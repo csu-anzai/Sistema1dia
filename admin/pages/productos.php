@@ -64,15 +64,15 @@
                             </div>
                             <div class="form-group">
                                  <label for="">Compra</label>
-                                 <input class="form-control" type="number" name="compra" id="compra">
+                                 <input class="form-control" type="number" name="compra" id="compra" v-model="compraP">
                             </div>
                             <div class="form-group">
                                  <label for="">Venta</label>
-                                 <input class="form-control" type="number" name="venta" id="venta">
+                                 <input class="form-control" type="number" name="venta" id="venta" v-model="ventaP">
                             </div>
                             <div class="form-group">
                                  <label for="">Ganancia</label>
-                                 <input class="form-control" type="number" name="ganancia" id="ganancia">
+                                 <input class="form-control" readonly type="number" :value="(gananciaProducto)" name="ganancia" id="ganancia">
                             </div>
                             <div class="form-group">
                                  <label for="">Tipo</label>
@@ -142,7 +142,15 @@
                             </div>
                             <div class="form-group">
                                  <label for="">Ganancia</label>
+                                 <div v-if="gananciaProductoE">  
+                                    
+                                 <input class="form-control" type="number" name="eganancia" id="eganancia" v-model="gananciaProductoE">
+                                 </div>
+                                 <div v-else="gananciaProductoE">
                                  <input class="form-control" type="number" name="eganancia" id="eganancia" v-model="elegido.ganancia">
+                                
+                                 </div>
+                                 
                             </div>
                             <div class="form-group">
                                  <label for="">Tipo</label>
