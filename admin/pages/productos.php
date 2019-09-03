@@ -323,7 +323,7 @@
                             </div>
                             <input type="hidden" name="eid" id="eid" v-model="elegido.id">
                             <div class="form-group">
-                                <button class="btn btn-outline-warning btn-block" @click="editarTipoProducto=false;actualizarProducto()">Actualizar</button>
+                                <button class="btn btn-outline-warning btn-block" @click="editarTipoProducto=false;actualizarTipoProducto()">Actualizar</button>
                             </div>
                              </div>
                          </div>
@@ -353,7 +353,7 @@
             <input type="hidden" name="did" id="did" v-model="elegido.id">
              <div class="form-group">
                    <p>¿Estas seguro que quieres eliminar a <strong>{{elegido.nombre}}</strong>? Como ella te borro de su vida :'v</p>
-                    <button class="btn btn-outline-danger " @click="eliminarTipoProducto=false;deleteProducto()">Eliminar</button>
+                    <button class="btn btn-outline-danger " @click="eliminarTipoProducto=false;deleteTipoProducto()">Eliminar</button>
                     <button class="btn btn-outline-secondary float-right" @click="eliminarTipoProducto=false">Cancelar</button>
             </div>
                            
