@@ -10,10 +10,13 @@ var app = new Vue({
         editarMaterial:false,
         eliminarMaterial:false,
         nuevoTipoP:false,
-        perfil:false,
+        nuevoTipoM:false,
         nuevoTipoProducto:false,
         editarTipoProducto:false,
         eliminarTipoProducto:false,
+        nuevoTipoMaterial:false,
+        editarTipoMaterial:false,
+        eliminarTipoMaterial:false,
         url:null,
         eurl:null,
         productos:[],
@@ -30,7 +33,10 @@ var app = new Vue({
         compraP:0,
         gananciaP:0,
         totalGanaciaP:0,
-        totalProducto:0
+        totalProducto:0,
+        verProducto:false,
+        totalGanaciaM:0,
+        totalMateriales:0
         
     },
     mounted:function(){
@@ -73,6 +79,20 @@ var app = new Vue({
                 this.totalProducto++
             }
             return this.totalProducto
+        },
+        sumaGananciaM(){
+            this.totalGanaciaM=0
+            for(material of this.materiales){
+                this.totalGanaciaM = this.totalGanaciaM + parseFloat(material.ganancia)
+            }
+            return this.totalGanaciaM
+        },
+        TotalMaterial(){
+            this.totalMateriales=0
+            for(material of this.materiales){
+                this.totalMateriales++
+            }
+            return this.totalMateriales
         }
     },
     

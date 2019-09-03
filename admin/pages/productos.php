@@ -27,7 +27,7 @@
         </thead>
         <tbody>
             <tr v-for="producto of productos">
-                <td><a href="#" @click="perfil=true"><img :src="'../img/producto/'+producto.foto" width="50px" height="50px"></a></td>
+                <td><div><a href="#" @click="verProducto=true;elegirProducto(producto)"><img :src="'../img/producto/'+producto.foto" width="50px" height="50px"></a></td>
                 <td><div style="width: 200px">{{producto.nombre}}</div></td>
                 <td><div style="width: 200px">{{producto.detalle}}</div></td>
                 <td>S/. {{producto.preciocompra}}</td>
@@ -213,6 +213,22 @@
 
 </div>
 </div>
+
+<div class="contenido" v-if="verProducto">
+
+<div class="modal-dialog">
+       <div class="modal-content">
+       <button type="button" class="close" @click="verProducto=false" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+               </button>
+             <div class="modal-body">
+             <center><img :src="'../img/producto/'+elegido.foto" width="350px" height="350px"></center>
+        </div>
+    </div>
+
+</div>
+</div>
+
 <!-- Nuevo Tipo de Producto-->
 
 <div class="contenido" v-if="nuevoTipoP">
@@ -242,6 +258,7 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Detalle</th>
+                            <th>Options</th>
                         </tr>
                     </thead>
                     <tbody>

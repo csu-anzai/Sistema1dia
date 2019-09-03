@@ -6,7 +6,11 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<button class="btn btn-success btn-sm" @click="nuevoMaterial=true">Nuevo</button><br><br>
+<button class="btn btn-success btn-sm" @click="nuevoMaterial=true">Nuevo</button>
+<span class="ml-3">Tienes: <strong>{{TotalMaterial}}</strong> Materiales</span>
+    <button class="btn btn-primary btn-sm float-right" @click="nuevoTipoM=true">Nuevo Tipo</button>
+    <span class="float-right mr-5">Ganancia Total: <strong> S/. {{sumaGananciaM}}</strong></span>
+<br><br>
     <table class="table table-sm">
         <thead>
             <tr>
@@ -212,6 +216,168 @@
 
 </div>
 
+</div>
+
+<div class="contenido" v-if="nuevoTipoM">
+
+
+
+<div class="modal-dialog modal-lg modal-dialog-scrollable">
+       <div class="modal-content">
+           <div class="modal-header">
+            <center><h2 class="text-center">Nuevo Tipo de Material</h2></center>
+           <button type="button" class="close" @click="nuevoTipoM=false" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+                <div v-if="mensaje1" :class="'alert alert-'+(color) + ' alert-dismissible fade show'"  role="alert">
+                    {{mensaje1}}
+                <button class="close" @click="mensaje1=false">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                    
+             <button class="btn btn-success btn-sm" @click="nuevoTipoMaterial=true">Nuevo</button>
+                <br><br>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Detalle</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            <tr v-for="tipos of tipoMaterial">
+                
+                <td><div style="width: 200px">{{tipos.nombre}}</div></td>
+                <td><div style="width: 200px">{{tipos.detalle}}</div></td>
+              
+                <td>
+                    <button @click="editarTipoMaterial=true;elegirTipoMaterial(tipos)" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
+                    <button @click="eliminarTipoMaterial=true;elegirTipoMaterial(tipos)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+      <div class="contenido" v-if="nuevoTipoProducto">
+
+<div class="modal-dialog modal-lg modal-dialog-scrollable">
+       <div class="modal-content">
+           <div class="modal-header">
+            <center><h2 class="text-center">Nuevo Tipo de Producto</h2></center>
+           <button type="button" class="close" @click="nuevoTipoProducto=false" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+                 <div class="row">
+                     <div class="col-3 ml-5"></div>
+                     <div class="col-5">
+                         <div class="card">
+                             <div class="card-body">
+                            <div class="form-group">
+                                 <label for="">Nombre</label>
+                                 <input class="form-control" type="text" name="nombre" id="nombre">
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Detalle</label>
+                                 <textarea class="form-control" name="detalle" id="detalle" cols="20" rows="5"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button class="btn btn-outline-success btn-block" @click="nuevoTipoProducto=false;insertarTipoProducto()">Save</button>
+                            </div>
+                             </div>
+                         </div>
+                    
+                        </div>
+                 </div>
+                
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!----- Editar Producto ------>
+
+<div class="contenido" v-if="editarTipoProducto">
+
+<div class="modal-dialog modal-lg modal-dialog-scrollable">
+       <div class="modal-content">
+           <div class="modal-header">
+            <center><h2 class="text-center">Editar Tipo de Producto</h2></center>
+           <button type="button" class="close" @click="editarTipoProducto=false" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+                 <div class="row">
+                     <div class="col-3 ml-5"></div>
+                     <div class="col-5">
+                         <div class="card">
+                             <div class="card-body">
+                            <div class="form-group">
+                                 <label for="">Nombre</label>
+                                 <input class="form-control" type="text" name="enombre" id="enombre" v-model="elegido.nombre">
+                            </div>
+                            <div class="form-group">
+                                 <label for="">Detalle</label>
+                                 <textarea class="form-control" name="edetalle" id="edetalle" v-model="elegido.detalle" cols="20" rows="5"></textarea>
+                            </div>
+                            <input type="hidden" name="eid" id="eid" v-model="elegido.id">
+                            <div class="form-group">
+                                <button class="btn btn-outline-warning btn-block" @click="editarTipoProducto=false;actualizarTipoProducto()">Actualizar</button>
+                            </div>
+                             </div>
+                         </div>
+                    
+                        </div>
+                 </div>
+                
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="contenido" v-if="eliminarTipoProducto">
+
+<div class="modal-dialog">
+       <div class="modal-content">
+           <div class="modal-header">
+            <center><h2 class="text-center">Eliminar Tipo de Producto</h2></center>
+           <button type="button" class="close" @click="eliminarTipoProducto=false" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+                     
+            <input type="hidden" name="did" id="did" v-model="elegido.id">
+             <div class="form-group">
+                   <p>¿Estas seguro que quieres eliminar a <strong>{{elegido.nombre}}</strong>? Como ella te borro de su vida :'v</p>
+                    <button class="btn btn-outline-danger " @click="eliminarTipoProducto=false;deleteTipoProducto()">Eliminar</button>
+                    <button class="btn btn-outline-secondary float-right" @click="eliminarTipoProducto=false">Cancelar</button>
+            </div>
+                           
+                
+            
+        </div>
+    </div>
+
+</div>
+</div>
+            
+            </div>
+    </div>
+
+</div>
 </div>
 
 

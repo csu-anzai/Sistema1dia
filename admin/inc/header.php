@@ -14,7 +14,7 @@
     
     <style>
         .fondo{
-          background-image: url(../img/fondos/fondo.jpg);
+          background-image: url(../img/fondos/fondo.jpg) no-repeat center center;
           background-size: cover;
         }
     </style>
