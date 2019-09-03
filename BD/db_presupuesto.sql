@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 03-09-2019 a las 20:16:50
+-- Tiempo de generación: 03-09-2019 a las 23:43:36
 -- Versión del servidor: 10.4.7-MariaDB-log
 -- Versión de PHP: 7.2.19
 
@@ -33,7 +33,8 @@ CREATE TABLE `instalacion` (
   `Nombre` varchar(100) DEFAULT NULL,
   `precioporunidad` decimal(6,2) DEFAULT NULL,
   `Pasaje` decimal(6,2) DEFAULT NULL,
-  `id_tipo` int(11) NOT NULL
+  `id_tipo` int(11) NOT NULL,
+  `foto` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -60,7 +61,8 @@ CREATE TABLE `material` (
 INSERT INTO `material` (`id`, `nombre`, `detalle`, `preciocompra`, `precioventa`, `ganancia`, `id_tipo`, `foto`) VALUES
 (7, 'material 1', 'detalle 1', '20.00', '60.00', '40.00', 3, 'alejandro-toledo-manrique.jpg'),
 (12, 'mterial 2', 'detalle 2', '10.00', '30.00', '20.00', 4, '30409170.jpg'),
-(13, 'prueba', 'gg', '20.00', '100.00', '80.00', 3, 'codigo.jpg');
+(13, 'prueba', 'gg', '20.00', '200.00', '180.00', 3, 'codigo.jpg'),
+(16, 'material caro', 'ta caro pe', '9.00', '140.00', '131.00', 4, 'senatii-logo-actual.jpg');
 
 -- --------------------------------------------------------
 
@@ -86,7 +88,8 @@ CREATE TABLE `producto` (
 INSERT INTO `producto` (`id`, `nombre`, `detalle`, `preciocompra`, `precioventa`, `ganancia`, `foto`, `id_tipo`) VALUES
 (1, 'Disco Duro Solido 240gb Kingston Ssd A400', 'Factor de forma: 2.5\"\nInterfaz:\nSATA Rev. 3.0 (6 Gb/s), compatible con SATA Rev. 2.0 (3 Gb/s)', '26.00', '104.00', '78.00', 'discoduro.jpg', 2),
 (2, 'Samsung 5 500 Gb Ssd Disco Sólido Externo 540 ', 'Con una memoria flash V-NAND y un Puerto USB 3.1 Gen 2', '207.00', '442.00', '235.00', 'disc.jpg', 2),
-(15, 'Teclado Mecanico Antryx Zigra Mk Blue/red Switch', 'Interruptor mecánico en dos presentaciones Outemu Blue y Outemu Red', '200.00', '250.00', '50.00', 'teclado.jpg', 3);
+(15, 'Teclado Mecanico Antryx Zigra Mk Blue/red Switch', 'Interruptor mecánico en dos presentaciones Outemu Blue y Outemu Red', '200.00', '250.00', '50.00', 'teclado.jpg', 3),
+(20, 'Monitor Led Benq Gw2280 Full Hd 22 Pulgadas Hdmi Brillo Auto', 'BenQ Monitor LED 22 pulgadas 1080p Eye-Care ( GW2280 ), 1920x1080, Alto ', '300.00', '478.50', '178.50', 'monitor.jpg', 4);
 
 -- --------------------------------------------------------
 
@@ -152,7 +155,7 @@ INSERT INTO `tipoproducto` (`id`, `nombre`, `detalle`) VALUES
 (2, 'Disco Duro', ' Disco con una gran capacidad de almacenamiento'),
 (3, 'Teclados', 'Dispositivo o periférico de entrada, en parte inspirado en el teclado de las máquinas de escribir'),
 (4, 'Monitor', ':v para ver en hd 4k curvo'),
-(5, 'Lectora', 'para leer ');
+(5, 'Lectora', 'para leer v:');
 
 -- --------------------------------------------------------
 
@@ -238,13 +241,13 @@ ALTER TABLE `instalacion`
 -- AUTO_INCREMENT de la tabla `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `tipoinstalacion`
@@ -292,6 +295,7 @@ ALTER TABLE `material`
 ALTER TABLE `producto`
   ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipoproducto` (`id`);
 COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
