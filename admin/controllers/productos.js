@@ -9,7 +9,11 @@ var app = new Vue({
         nuevoMaterial:false,
         editarMaterial:false,
         eliminarMaterial:false,
+        nuevoTipoP:false,
         perfil:false,
+        nuevoTipoProducto:false,
+        editarTipoProducto:false,
+        eliminarTipoProducto:false,
         url:null,
         eurl:null,
         productos:[],
@@ -17,6 +21,7 @@ var app = new Vue({
         tipoMaterial:[],
         materiales:[],
         mensaje:"",
+        mensaje1:"",
         color:"",
         ventaM:0,
         compraM:0,
@@ -47,6 +52,11 @@ var app = new Vue({
             this.gananciaP=0
             this.gananciaP=this.elegido.precioventa - this.elegido.preciocompra
             return this.gananciaP
+        },
+        gananciaMaterialE(){
+            this.gananciaM=0
+            this.gananciaM=this.elegido.precioventa - this.elegido.preciocompra
+            return this.gananciaM
         }
     },
     
@@ -123,6 +133,7 @@ var app = new Vue({
             formdata.append("venta",document.getElementById("venta").value)
             formdata.append("ganancia",document.getElementById("ganancia").value)
             formdata.append("tipo",document.getElementById("tipo").value)
+            formdata.append("foto",document.getElementById("foto").files[0])
 
             if(document.getElementById("nombre").value =="" || document.getElementById("detalle").value == ""){
                 alert("Los campos deben estar completos")
@@ -136,6 +147,25 @@ var app = new Vue({
                      this.compraM=0
                      this.ventaM=0
                      this.gananciaM=0
+                })
+            }
+            
+        },
+        insertarTipoProducto:function(){
+            let formdata= new FormData()
+            formdata.append("nombre",document.getElementById("nombre").value)
+            formdata.append("detalle",document.getElementById("detalle").value)
+
+            if(document.getElementById("nombre").value =="" || document.getElementById("detalle").value == ""){
+                alert("Los campos deben estar completos")
+
+            }else{
+                axios.post("admin/controllers/tipoProducto.php?accion=insertar",formdata)
+                .then((res)=>{
+                     this.mostrarTipo()
+                     this.mensaje1=res.data.mensaje1
+                     this.color=res.data.color
+                     
                 })
             }
             
@@ -175,6 +205,7 @@ var app = new Vue({
             formdata.append("eventa",document.getElementById("eventa").value)
             formdata.append("eganancia",document.getElementById("eganancia").value)
             formdata.append("etipo",document.getElementById("etipo").value)
+            formdata.append("efoto",document.getElementById("efoto").files[0])
 
             if(document.getElementById("enombre").value =="" || document.getElementById("edetalle").value == ""){
                 alert("Los campos deben estar completos")
@@ -186,6 +217,7 @@ var app = new Vue({
                      this.mostrarMateriales()
                      this.mensaje=res.data.mensaje
                      this.color=res.data.color
+                     location.reload();
                 })
             }
             
@@ -220,6 +252,10 @@ var app = new Vue({
         },
         elegirMaterial(material){
             this.elegido=material
+
+        },
+        elegirTipoProducto(tipos){
+            this.elegido=tipos
 
         }
     }

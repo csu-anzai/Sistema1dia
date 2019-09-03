@@ -28,9 +28,14 @@ switch ($accion) {
         $venta=$_POST['venta'];
         $ganancia=$_POST['ganancia'];
         $tipo=$_POST['tipo'];
+        $foto=$_FILES['foto']['name'];
 
-        $data="'$nombre','$detalle','$compra','$venta','$ganancia',$tipo";
-        $u=$con->insertar("material","nombre,detalle,preciocompra,precioventa,ganancia,id_tipo",$data);
+        $target_dir="../../img/material/";
+        $target_file=$target_dir.basename($foto);
+        move_uploaded_file($_FILES['foto']['tmp_name'],$target_file);
+
+        $data="'$nombre','$detalle','$compra','$venta','$ganancia','$tipo','$foto'";
+        $u=$con->insertar("material","nombre,detalle,preciocompra,precioventa,ganancia,id_tipo,foto",$data);
         if($u){
             $res['mensaje']="Insercion Exitosa";
             $res['color']="success";
@@ -46,8 +51,18 @@ switch ($accion) {
         $compra=$_POST['ecompra'];
         $venta=$_POST['eventa'];
         $ganancia=$_POST['eganancia'];
+        $id_tipo=$_POST['etipo'];
+        $foto="";
 
-        $data="nombre='$nombre',detalle='$detalle',preciocompra='$compra',precioventa='$venta',ganancia='$ganancia'";
+        if(isset($_FILES['efoto']['name'])){
+            $foto=$_FILES['efoto']['name'];
+            $target_dir="../../img/producto/";
+            $target_file=$target_dir.basename($foto);
+            move_uploaded_file($_FILES['efoto']['tmp_name'],$target_file);
+            $foto=", foto='".$_FILES['efoto']['name']."'";
+        }
+
+        $data="nombre='$nombre',detalle='$detalle',preciocompra='$compra',precioventa='$venta',ganancia='$ganancia',id_tipo='$id_tipo'".$foto;
         $u=$con->actualizar("material",$data,"id=".$id);
         if($u){
             $res['mensaje']="Edicion Exitosa";

@@ -80,6 +80,15 @@
                                  </select>
                                  
                             </div>
+                            <div class="from-group">
+                                <label for="">Foto</label>
+                                <div class="card">
+                                    <div class="card-body">
+                                    <center><img v-if="url" :src="url" width="150px" height="150px"></center>
+                                    </div>
+                                </div>
+                                <input class="form-control-file" type="file" name="foto" ref="foto" id="foto" v-on:change="verImagen()">
+                            </div><br>
                             <div class="form-group">
                                 <button class="btn btn-outline-success btn-block" @click="nuevoMaterial=false;insertarMaterial()">Insertar</button>
                             </div>
@@ -132,7 +141,11 @@
                             </div>
                             <div class="form-group">
                                  <label for="">Ganancia</label>
-                                 <input class="form-control" type="number" name="eganancia" id="eganancia" v-model="elegido.ganancia">
+    
+                                 <input class="form-control" type="number" readonly name="eganancia" id="eganancia" v-model="gananciaMaterialE">
+                                 
+                                 
+                                 
                             </div>
                             <div class="form-group">
                                  <label for="">Tipo</label>
@@ -142,6 +155,20 @@
                                  </select>
                                  
                             </div>
+                            <div class="from-group">
+                                <label for="">Foto</label>
+                                <div class="card">
+                                    <div class="card-body">
+                                    <div v-if="eurl">
+                                          <center><img :src="eurl" width="150px" height="150px"></center>  
+                                    </div>
+                                    <div v-else="eurl">
+                                        <center><img :src="'../img/material/'+elegido.foto" width="150px" height="150px"></center>
+                                    </div>
+                                    </div>
+                                </div>
+                                <input class="form-control-file" type="file" name="efoto" ref="efoto" id="efoto" v-on:change="everImagen()">
+                            </div><br>
                             <input type="hidden" name="eid" id="eid" v-model="elegido.id">
                             <div class="form-group">
                                 <button class="btn btn-outline-warning btn-block" @click="editarMaterial=false;actualizarMaterial()">Actualizar</button>
@@ -175,7 +202,7 @@
              <div class="form-group">
                    <p>¿Estas seguro que quieres eliminar a <strong>{{elegido.nombre}}</strong>? Como ella te borro de su vida :'v</p>
                     <button class="btn btn-outline-danger " @click="eliminarMaterial=false;deleteMaterial()">Eliminar</button>
-                    <button class="btn btn-outline-secondary " @click="eliminarMaterial=false">Cancelar</button>
+                    <button class="btn btn-outline-secondary float-right " @click="eliminarMaterial=false">Cancelar</button>
             </div>
                            
                 
