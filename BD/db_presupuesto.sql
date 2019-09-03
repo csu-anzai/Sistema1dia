@@ -74,6 +74,7 @@ CREATE TABLE `producto` (
   `precioventa` decimal(6,2) DEFAULT NULL,
   `ganancia` decimal(6,2) DEFAULT NULL,
   `foto` varchar(200) DEFAULT NULL,
+<<<<<<< HEAD
   `id_tipo` int(11	) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -88,6 +89,11 @@ CREATE TABLE `tipoproducto` (
 
 -- --------------------------------------------------------
 
+=======
+  `id_tipo` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+>>>>>>> RamaWendell
 --
 -- Volcado de datos para la tabla `producto`
 --
@@ -300,7 +306,10 @@ ALTER TABLE `producto`
   ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipoproducto` (`id`);
 COMMIT;
 
+<<<<<<< HEAD
 ALTER TABLE `producto` ADD CONSTRAINT id_tipo FOREIGN KEY(id) REFERENCES `tipoproducto` (`id`);
+=======
+>>>>>>> RamaWendell
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
