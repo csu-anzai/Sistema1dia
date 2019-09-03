@@ -196,6 +196,26 @@ var app = new Vue({
             }
             
         },
+        actualizarTipoProducto:function(){
+            let formdata= new FormData()
+            formdata.append("eid",document.getElementById("eid").value)
+            formdata.append("enombre",document.getElementById("enombre").value)
+            formdata.append("edetalle",document.getElementById("edetalle").value)
+
+            if(document.getElementById("enombre").value =="" || document.getElementById("edetalle").value == ""){
+                alert("Los campos deben estar completos")
+                nuevoProducto:false
+            }else{
+                axios.post("admin/controllers/tipoProducto.php?accion=editar",formdata)
+                .then((res)=>{
+                    console.log(res)
+                     this.mostrarTipo()
+                     this.mensaje1=res.data.mensaje1
+                     this.color=res.data.color
+                })
+            }
+            
+        },
         actualizarMaterial:function(){
             let formdata= new FormData()
             formdata.append("eid",document.getElementById("eid").value)
@@ -231,6 +251,18 @@ var app = new Vue({
                 console.log(res)
                 this.mostrarProductos()
                 this.mensaje=res.data.mensaje
+                this.color=res.data.color
+           })
+        },
+        deleteTipoProducto:function(){
+            let formdata= new FormData()
+            formdata.append("did",document.getElementById("did").value)
+
+            axios.post("admin/controllers/tipoProducto.php?accion=eliminar",formdata)
+           .then((res)=>{
+                console.log(res)
+                this.mostrarTipo()()
+                this.mensaje1=res.data.mensaje1
                 this.color=res.data.color
            })
         },
