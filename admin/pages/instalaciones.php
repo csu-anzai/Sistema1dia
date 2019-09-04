@@ -23,7 +23,7 @@
         </thead>
         <tbody>
             <tr v-for="instalacion of instalaciones">
-                <td><a href="#" @click="perfil=true"><img :src="'./img/instalacion/'+ instalacion.foto" width="50px" height="50px"></a></td>
+                <td><a href="#" @click="verProducto=true;elegirInstalacion(instalacion)"><img :src="'./img/instalacion/'+ instalacion.foto" width="50px" height="50px"></a></td>
                 <td><div style="width: 150px">{{instalacion.Nombre}}</div></td>
                 <td>S/. {{instalacion.precioporunidad}}</td>
                 <td>S/. {{instalacion.Pasaje}}</td>
@@ -194,6 +194,22 @@
 
 </div>
 
+<div class="contenido" v-if="verProducto">
+
+<div class="modal-dialog">
+       <div class="modal-content">
+       <button type="button" class="close" @click="verProducto=false" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+               </button>
+             <div class="modal-body">
+             <center><img :src="'./img/instalacion/'+elegido.foto" width="350px" height="340px"></center>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
 <!-- Nuevo tipo instalacion -->
 
 <div class="contenido" v-if="nuevoTipoM">
@@ -203,7 +219,7 @@
 <div class="modal-dialog modal-lg modal-dialog-scrollable">
        <div class="modal-content">
            <div class="modal-header">
-            <center><h2 class="text-center">Nuevo Tipo de Material</h2></center>
+            <center><h2 class="text-center">Nuevo Tipo de Instalacion</h2></center>
            <button type="button" class="close" @click="nuevoTipoM=false" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                </button>
@@ -227,7 +243,7 @@
                         </tr>
                     </thead>
                     <tbody>
-            <tr v-for="tipos of tipoMaterial">
+            <tr v-for="tipos of tipoInstalacion">
                 
                 <td><div style="width: 200px">{{tipos.nombre}}</div></td>
                 <td><div style="width: 200px">{{tipos.detalle}}</div></td>
@@ -246,7 +262,7 @@
 <div class="modal-dialog modal-lg modal-dialog-scrollable">
        <div class="modal-content">
            <div class="modal-header">
-            <center><h2 class="text-center">Nuevo Tipo de Producto</h2></center>
+            <center><h2 class="text-center">Nuevo Tipo de Instalacion</h2></center>
            <button type="button" class="close" @click="nuevoTipoMaterial=false" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                </button>
@@ -267,7 +283,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <button class="btn btn-outline-success btn-block" @click="nuevoTipoMaterial=false;insertarTipoMaterial()">Save</button>
+                                <button class="btn btn-outline-success btn-block" @click="nuevoTipoMaterial=false;insertarTipoInstalacion()">Save</button>
                             </div>
                              </div>
                          </div>
@@ -289,7 +305,7 @@
 <div class="modal-dialog modal-lg modal-dialog-scrollable">
        <div class="modal-content">
            <div class="modal-header">
-            <center><h2 class="text-center">Editar Tipo de Producto</h2></center>
+            <center><h2 class="text-center">Editar Tipo de Instalacion</h2></center>
            <button type="button" class="close" @click="editarTipoMaterial=false" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                </button>
@@ -310,7 +326,7 @@
                             </div>
                             <input type="hidden" name="eid" id="eid" v-model="elegido.id">
                             <div class="form-group">
-                                <button class="btn btn-outline-warning btn-block" @click="editarTipoMaterial=false;actualizarTipoMaterial()">Actualizar</button>
+                                <button class="btn btn-outline-warning btn-block" @click="editarTipoMaterial=false;actualizarTipoInstalacion()">Actualizar</button>
                             </div>
                              </div>
                          </div>
@@ -330,7 +346,7 @@
 <div class="modal-dialog">
        <div class="modal-content">
            <div class="modal-header">
-            <center><h2 class="text-center">Eliminar Tipo de Producto</h2></center>
+            <center><h2 class="text-center">Eliminar Tipo de Instalacion</h2></center>
            <button type="button" class="close" @click="eliminarTipoMaterial=false" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                </button>
@@ -340,7 +356,7 @@
             <input type="hidden" name="did" id="did" v-model="elegido.id">
              <div class="form-group">
                    <p>¿Estas seguro que quieres eliminar a <strong>{{elegido.nombre}}</strong>? Como ella te borro de su vida :'v</p>
-                    <button class="btn btn-outline-danger " @click="eliminarTipoMaterial=false;deleteTipoMaterial()">Eliminar</button>
+                    <button class="btn btn-outline-danger " @click="eliminarTipoMaterial=false;deleteTipoInstalacion()">Eliminar</button>
                     <button class="btn btn-outline-secondary float-right" @click="eliminarTipoMaterial=false">Cancelar</button>
             </div>
                            

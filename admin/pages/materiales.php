@@ -26,7 +26,7 @@
         </thead>
         <tbody>
             <tr v-for="material of materiales">
-                <td><a href="#" @click="perfil=true"><img :src="'./img/material/'+ material.foto" width="50px" height="50px"></a></td>
+                <td><a href="#" @click="verProducto=true;elegirMaterial(material)"><img :src="'./img/material/'+ material.foto" width="50px" height="50px"></a></td>
                 <td><div style="width: 150px">{{material.nombre}}</div></td>
                 <td><div style="width: 200px">{{material.detalle}}</div></td>
                 <td>S/. {{material.preciocompra}}</td>
@@ -216,6 +216,21 @@
 
 </div>
 
+</div>
+
+<div class="contenido" v-if="verProducto">
+
+<div class="modal-dialog">
+       <div class="modal-content">
+       <button type="button" class="close" @click="verProducto=false" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+               </button>
+             <div class="modal-body">
+             <center><img :src="'./img/material/'+elegido.foto" width="350px" height="350px"></center>
+        </div>
+    </div>
+
+</div>
 </div>
 
 <div class="contenido" v-if="nuevoTipoM">

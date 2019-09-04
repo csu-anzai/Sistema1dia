@@ -277,6 +277,25 @@ var app = new Vue({
             }
             
         },
+        insertarTipoInstalacion:function(){
+            let formdata= new FormData()
+            formdata.append("nombre",document.getElementById("nombre").value)
+            formdata.append("detalle",document.getElementById("detalle").value)
+
+            if(document.getElementById("nombre").value =="" || document.getElementById("detalle").value == ""){
+                alert("Los campos deben estar completos")
+
+            }else{
+                axios.post("admin/controllers/tipoInstalacion.php?accion=insertar",formdata)
+                .then((res)=>{
+                     this.mostrartipoInstalacion()
+                     this.mensaje1=res.data.mensaje1
+                     this.color=res.data.color
+                     
+                })
+            }
+            
+        },
         actualizarProducto:function(){
             let formdata= new FormData()
             formdata.append("eid",document.getElementById("eid").value)
@@ -337,6 +356,26 @@ var app = new Vue({
                 .then((res)=>{
                     console.log(res)
                      this.mostrartipoMaterial()
+                     this.mensaje1=res.data.mensaje1
+                     this.color=res.data.color
+                })
+            }
+            
+        },
+        actualizarTipoInstalacion:function(){
+            let formdata= new FormData()
+            formdata.append("eid",document.getElementById("eid").value)
+            formdata.append("enombre",document.getElementById("enombre").value)
+            formdata.append("edetalle",document.getElementById("edetalle").value)
+
+            if(document.getElementById("enombre").value =="" || document.getElementById("edetalle").value == ""){
+                alert("Los campos deben estar completos")
+                nuevoProducto:false
+            }else{
+                axios.post("admin/controllers/tipoInstalacion.php?accion=editar",formdata)
+                .then((res)=>{
+                    console.log(res)
+                     this.mostrartipoInstalacion()
                      this.mensaje1=res.data.mensaje1
                      this.color=res.data.color
                 })
@@ -425,6 +464,18 @@ var app = new Vue({
            .then((res)=>{
                 console.log(res)
                 this.mostrartipoMaterial()
+                this.mensaje1=res.data.mensaje1
+                this.color=res.data.color
+           })
+        },
+        deleteTipoInstalacion:function(){
+            let formdata= new FormData()
+            formdata.append("did",document.getElementById("did").value)
+
+            axios.post("admin/controllers/tipoInstalacion.php?accion=eliminar",formdata)
+           .then((res)=>{
+                console.log(res)
+                this.mostrartipoInstalacion()
                 this.mensaje1=res.data.mensaje1
                 this.color=res.data.color
            })
