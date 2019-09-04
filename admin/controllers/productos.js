@@ -42,6 +42,7 @@ var app = new Vue({
         verProducto:false,
         totalGanaciaM:0,
         totalMateriales:0,
+        totalInstalacion:0,
         newinstalacion:false
         
     },
@@ -101,6 +102,13 @@ var app = new Vue({
                 this.totalMateriales++
             }
             return this.totalMateriales
+        },
+        TotalInstalacion(){
+            this.totalInstalacion=0
+            for(instalacion of this.instalaciones){
+                this.totalInstalacion++
+            }
+            return this.totalInstalacion
         }
     },
     
@@ -205,6 +213,28 @@ var app = new Vue({
                      this.compraM=0
                      this.ventaM=0
                      this.gananciaM=0
+                })
+            }
+            
+        },
+        insertarInstalacion:function(){
+            let formdata= new FormData()
+            formdata.append("nombre",document.getElementById("nombre").value)
+            formdata.append("precio",document.getElementById("precio").value)
+            formdata.append("pasaje",document.getElementById("pasaje").value)
+            formdata.append("tipo",document.getElementById("tipo").value)
+            formdata.append("foto",document.getElementById("foto").files[0])
+
+            if(document.getElementById("nombre").value =="" || document.getElementById("precio").value == ""){
+                alert("Los campos deben estar completos")
+                
+            }else{
+                axios.post("admin/controllers/instalaciones.php?accion=insertar",formdata)
+                .then((res)=>{
+                     this.mostrarInstalacion()
+                     this.mensaje=res.data.mensaje
+                     this.color=res.data.color
+                    
                 })
             }
             
@@ -339,6 +369,30 @@ var app = new Vue({
             }
             
         },
+        actualizarInstalacion:function(){
+            let formdata= new FormData()
+            formdata.append("eid",document.getElementById("eid").value)
+            formdata.append("enombre",document.getElementById("enombre").value)
+            formdata.append("eprecio",document.getElementById("eprecio").value)
+            formdata.append("epasaje",document.getElementById("epasaje").value)
+            formdata.append("etipo",document.getElementById("etipo").value)
+            formdata.append("efoto",document.getElementById("efoto").files[0])
+
+            if(document.getElementById("enombre").value =="" || document.getElementById("eprecio").value == ""){
+                alert("Los campos deben estar completos")
+                nuevoProducto:false
+            }else{
+                axios.post("admin/controllers/instalaciones.php?accion=editar",formdata)
+                .then((res)=>{
+                    console.log(res)
+                     this.mostrarInstalacion()
+                     this.mensaje=res.data.mensaje
+                     this.color=res.data.color
+                     
+                })
+            }
+            
+        },
         deleteProducto:function(){
             let formdata= new FormData()
             formdata.append("did",document.getElementById("did").value)
@@ -383,6 +437,18 @@ var app = new Vue({
            .then((res)=>{
                 console.log(res)
                 this.mostrarMateriales()
+                this.mensaje=res.data.mensaje
+                this.color=res.data.color
+           })
+        },
+        deleteInstalacion:function(){
+            let formdata= new FormData()
+            formdata.append("did",document.getElementById("did").value)
+
+            axios.post("admin/controllers/instalaciones.php?accion=eliminar",formdata)
+           .then((res)=>{
+                console.log(res)
+                this.mostrarInstalacion()
                 this.mensaje=res.data.mensaje
                 this.color=res.data.color
            })

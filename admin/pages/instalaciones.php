@@ -7,7 +7,7 @@
   </button>
 </div>
 <button class="btn btn-success btn-sm" @click="nuevoInstalacion=true">Nuevo</button>
-<span class="ml-3">Tienes: <strong>{{TotalMaterial}}</strong> Materiales</span>
+<span class="ml-3">Tienes: <strong>{{TotalInstalacion}}</strong> Instalaciones</span>
     <button class="btn btn-primary btn-sm float-right" @click="nuevoTipoM=true">Nuevo Tipo</button>
 <br><br>
     <table class="table table-sm">
@@ -116,33 +116,22 @@
                              <div class="card-body">
                             <div class="form-group">
                                  <label for="">Nombre</label>
-                                 <input class="form-control" type="text" name="enombre" id="enombre" v-model="elegido.nombre">
+                                 <input class="form-control" type="text" name="enombre" id="enombre" v-model="elegido.Nombre">
                             </div>
                             <div class="form-group">
-                                 <label for="">Detalle</label>
-                                 <textarea class="form-control" name="edetalle" id="edetalle" v-model="elegido.detalle" cols="20" rows="5"></textarea>
+                                 <label for="">Precio por Unidad</label>
+                                 <input class="form-control" type="text" name="eprecio" id="eprecio" v-model="elegido.precioporunidad">
                             </div>
                             <div class="form-group">
-                                 <label for="">Compra</label>
-                                 <input class="form-control" type="number" name="ecompra" id="ecompra" v-model="elegido.preciocompra">
+                                 <label for="">Pasaje</label>
+                                 <input class="form-control" type="number" name="epasaje" id="epasaje" v-model="elegido.Pasaje">
                             </div>
-                            <div class="form-group">
-                                 <label for="">Venta</label>
-                                 <input class="form-control" type="number" name="eventa" id="eventa" v-model="elegido.precioventa">
-                            </div>
-                            <div class="form-group">
-                                 <label for="">Ganancia</label>
-    
-                                 <input class="form-control" type="number" readonly name="eganancia" id="eganancia" v-model="gananciaMaterialE">
-                                 
-                                 
-                                 
-                            </div>
+                            
                             <div class="form-group">
                                  <label for="">Tipo</label>
                                  <select class="form-control" name="etipo" id="etipo">
                                      <option :value="(elegido.id_tipo)">{{elegido.id_tipo}}</option>
-                                     <option v-for="item of tipoMaterial" :value="(item.id)">{{item.nombre}}</option>
+                                     <option v-for="item of tipoInstalacion" :value="(item.id)">{{item.nombre}}</option>
                                  </select>
                                  
                             </div>
@@ -154,7 +143,7 @@
                                           <center><img :src="eurl" width="150px" height="150px"></center>  
                                     </div>
                                     <div v-else="eurl">
-                                        <center><img :src="'./img/material/'+elegido.foto" width="150px" height="150px"></center>
+                                        <center><img :src="'./img/instalacion/'+elegido.foto" width="150px" height="150px"></center>
                                     </div>
                                     </div>
                                 </div>
@@ -191,7 +180,7 @@
                      
             <input type="hidden" name="did" id="did" v-model="elegido.id">
              <div class="form-group">
-                   <p>¿Estas seguro que quieres eliminar a <strong>{{elegido.nombre}}</strong>? Como ella te borro de su vida :'v</p>
+                   <p>¿Estas seguro que quieres eliminar a <strong>{{elegido.Nombre}}</strong>? Como ella te borro de su vida :'v</p>
                     <button class="btn btn-outline-danger " @click="eliminarInstalacion=false;deleteInstalacion()">Eliminar</button>
                     <button class="btn btn-outline-secondary float-right " @click="eliminarInstalacion=false">Cancelar</button>
             </div>
