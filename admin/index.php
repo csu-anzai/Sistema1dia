@@ -36,6 +36,18 @@ require "inc/header.php"?>
         </div>
         </div>
     </div>
+
+    <div class="col-auto">
+    <div class="card ml-3 mb-3" style="width: 18rem;">
+    <div class="contenedor">
+        <a href="#" @click="newinstalacion=true"><img class="imagen" src="img/fondos/instalaciones.jpg" height="225" width="280"  alt="..."></a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Instalaciones</h5>
+            <p class="card-text">Aqui podras Ver, agregar , modificar y eliminar instalaciones</p>
+        </div>
+        </div>
+    </div>
     
 </div>
 
@@ -75,6 +87,24 @@ require "inc/header.php"?>
               </div>
               <div class="modal-body">
                   <?php require "pages/productos.php" ?>
+             </div>
+         </div>
+     </div>
+
+</div>
+
+<div class="contenido" v-if="newinstalacion">
+
+ <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+             <center><h2 class="text-center">Instalaciones</h2></center>
+            <button type="button" class="close" @click="newinstalacion=false" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <?php require "pages/instalaciones.php" ?>
              </div>
          </div>
      </div>

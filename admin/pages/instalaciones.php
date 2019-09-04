@@ -6,48 +6,43 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<button class="btn btn-success btn-sm" @click="nuevoMaterial=true">Nuevo</button>
+<button class="btn btn-success btn-sm" @click="nuevoInstalacion=true">Nuevo</button>
 <span class="ml-3">Tienes: <strong>{{TotalMaterial}}</strong> Materiales</span>
     <button class="btn btn-primary btn-sm float-right" @click="nuevoTipoM=true">Nuevo Tipo</button>
-    <span class="float-right mr-5">Ganancia Total: <strong> S/. {{sumaGananciaM}}</strong></span>
 <br><br>
     <table class="table table-sm">
         <thead>
             <tr>
                 <th>Foto</th>
                 <th>Nombre</th>
-                <th>Detalle</th>
-                <th>$ Compra</th>
-                <th>$ Venta</th>
-                <th>Ganancia</th>
+                <th>Precio por Unidad</th>
+                <th>Pasaje</th>
                 <th>Tipo</th>
                 <th>Options</th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="material of materiales">
-                <td><a href="#" @click="perfil=true"><img :src="'./img/material/'+ material.foto" width="50px" height="50px"></a></td>
-                <td><div style="width: 150px">{{material.nombre}}</div></td>
-                <td><div style="width: 200px">{{material.detalle}}</div></td>
-                <td>S/. {{material.preciocompra}}</td>
-                <td>S/. {{material.precioventa}}</td>
-                <td>S/. {{material.ganancia}}</td>
-                <td>{{material.id_tipo}}</td>
+            <tr v-for="instalacion of instalaciones">
+                <td><a href="#" @click="perfil=true"><img :src="'./img/instalacion/'+ instalacion.foto" width="50px" height="50px"></a></td>
+                <td><div style="width: 150px">{{instalacion.Nombre}}</div></td>
+                <td>S/. {{instalacion.precioporunidad}}</td>
+                <td>S/. {{instalacion.Pasaje}}</td>
+                <td>{{instalacion.id_tipo}}</td>
                 <td>
-                    <button @click="editarMaterial=true;elegirMaterial(material)" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
-                    <button @click="eliminarMaterial=true;elegirMaterial(material)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                    <button @click="editarInstalacion=true;elegirInstalacion(instalacion)" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
+                    <button @click="eliminarInstalacion=true;elegirInstalacion(instalacion)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <div class="contenido" v-if="nuevoMaterial">
+    <div class="contenido" v-if="nuevoInstalacion">
 
 <div class="modal-dialog modal-xl modal-dialog-scrollable">
        <div class="modal-content">
            <div class="modal-header">
-            <center><h2 class="text-center">Nuevo Material</h2></center>
-           <button type="button" class="close" @click="nuevoMaterial=false" data-dismiss="modal" aria-label="Close">
+            <center><h2 class="text-center">Nueva Instalacion</h2></center>
+           <button type="button" class="close" @click="nuevoInstalacion=false" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                </button>
              </div>
@@ -62,25 +57,17 @@
                                  <input class="form-control" type="text" name="nombre" id="nombre">
                             </div>
                             <div class="form-group">
-                                 <label for="">Detalle</label>
-                                 <textarea class="form-control" name="detalle" id="detalle" cols="20" rows="5"></textarea>
+                                 <label for="">Precio por unidad</label>
+                                 <input class="form-control" type="number" name="precio" id="precio">
                             </div>
                             <div class="form-group">
-                                 <label for="">Compra</label>
-                                 <input class="form-control" type="number" name="compra" id="compra" v-model="compraM">
-                            </div>
-                            <div class="form-group">
-                                 <label for="">Venta</label>
-                                 <input class="form-control" type="number" name="venta" id="venta" v-model="ventaM">
-                            </div>
-                            <div class="form-group">
-                                 <label for="">Ganancia</label>
-                                 <input class="form-control" readonly type="number" name="ganancia" :value="(gananciaMaterial)" id="ganancia">
+                                 <label for="">Pasaje</label>
+                                 <input class="form-control" type="number" name="pasaje" id="pasaje">
                             </div>
                             <div class="form-group">
                                  <label for="">Tipo</label>
                                  <select class="form-control" name="tipo" id="tipo">
-                                     <option v-for="item of tipoMaterial" :value="(item.id)">{{item.nombre}}</option>
+                                     <option v-for="item of tipoInstalacion" :value="(item.id)">{{item.nombre}}</option>
                                  </select>
                                  
                             </div>
@@ -94,7 +81,7 @@
                                 <input class="form-control-file" type="file" name="foto" ref="foto" id="foto" v-on:change="verImagen()">
                             </div><br>
                             <div class="form-group">
-                                <button class="btn btn-outline-success btn-block" @click="nuevoMaterial=false;insertarMaterial()">Insertar</button>
+                                <button class="btn btn-outline-success btn-block" @click="nuevoInstalacion=false;insertarInstalacion()">Insertar</button>
                             </div>
                              </div>
                          </div>
@@ -111,13 +98,13 @@
 
 <!----- Editar Producto ------>
 
-<div class="contenido" v-if="editarMaterial">
+<div class="contenido" v-if="editarInstalacion">
 
 <div class="modal-dialog modal-xl modal-dialog-scrollable">
        <div class="modal-content">
            <div class="modal-header">
             <center><h2 class="text-center">Editar Producto</h2></center>
-           <button type="button" class="close" @click="editarMaterial=false" data-dismiss="modal" aria-label="Close">
+           <button type="button" class="close" @click="editarInstalacion=false" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                </button>
              </div>
@@ -175,7 +162,7 @@
                             </div><br>
                             <input type="hidden" name="eid" id="eid" v-model="elegido.id">
                             <div class="form-group">
-                                <button class="btn btn-outline-warning btn-block" @click="editarMaterial=false;actualizarMaterial()">Actualizar</button>
+                                <button class="btn btn-outline-warning btn-block" @click="editarInstalacion=false;actualizarInstalacion()">Actualizar</button>
                             </div>
                              </div>
                          </div>
@@ -190,13 +177,13 @@
 
 </div>
 
-<div class="contenido" v-if="eliminarMaterial">
+<div class="contenido" v-if="eliminarInstalacion">
 
 <div class="modal-dialog">
        <div class="modal-content">
            <div class="modal-header">
             <center><h2 class="text-center">Eliminar Producto</h2></center>
-           <button type="button" class="close" @click="eliminarMaterial=false" data-dismiss="modal" aria-label="Close">
+           <button type="button" class="close" @click="eliminarInstalacion=false" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                </button>
              </div>
@@ -205,8 +192,8 @@
             <input type="hidden" name="did" id="did" v-model="elegido.id">
              <div class="form-group">
                    <p>¿Estas seguro que quieres eliminar a <strong>{{elegido.nombre}}</strong>? Como ella te borro de su vida :'v</p>
-                    <button class="btn btn-outline-danger " @click="eliminarMaterial=false;deleteMaterial()">Eliminar</button>
-                    <button class="btn btn-outline-secondary float-right " @click="eliminarMaterial=false">Cancelar</button>
+                    <button class="btn btn-outline-danger " @click="eliminarInstalacion=false;deleteInstalacion()">Eliminar</button>
+                    <button class="btn btn-outline-secondary float-right " @click="eliminarInstalacion=false">Cancelar</button>
             </div>
                            
                 
@@ -217,6 +204,8 @@
 </div>
 
 </div>
+
+<!-- Nuevo tipo instalacion -->
 
 <div class="contenido" v-if="nuevoTipoM">
 

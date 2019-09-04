@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="./Style/fontawesome/css/all.css">
     <link rel="stylesheet" href="./Style/footer.css">
     <link rel="stylesheet" href="./Style/modal.css">
+
+
+    <link rel="stylesheet" href="../Style/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Style/bootstrap.min.css">
+    <link rel="stylesheet" href="../Style/fontawesome/css/all.css">
    
     
     <style>
@@ -35,7 +40,7 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../admin/proforma.php">Proforma</a>
+        <a class="nav-link" href="./admin/proforma.php">Proforma</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
